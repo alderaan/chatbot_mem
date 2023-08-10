@@ -1,0 +1,8 @@
+#name: your_env_name # Name is managed by the Makefile
+channels:
+  - defaults
+dependencies:
+  - python=3.11.4
+  - pip
+  - pip:
+      - langchain[llms]
