@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 
-# Imports
-import os
-# from langchain.llms import OpenAI
+"""
+Name:                   bot_simple
+Memory:                 No
+Continued Conversation: No
+"""
+
+# IMPORTS
 from langchain.chat_models import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.prompts.chat import SystemMessage, HumanMessagePromptTemplate
 
-# Setup 
-key = os.environ["OPENAI_API_KEY"]
-
-
+# MAIN
 template = ChatPromptTemplate.from_messages(
     [
         SystemMessage(
             content=(
-                "You are a helpful assistant that re-writes the user's text to "
-                "sound more upbeat."
+                "You are an executive coach, helping the user to achieve "
+                "mental, physical and professional peak performance."
             )
         ),
         HumanMessagePromptTemplate.from_template("{text}"),
@@ -24,5 +25,8 @@ template = ChatPromptTemplate.from_messages(
 )
 
 llm = ChatOpenAI(temperature=0.9)
-out = llm(template.format_messages(text='i hate the weather today.'))
-print(out)
+
+print("What's up?")
+input = input()
+output = llm(template.format_messages(text=input))
+print(output)
